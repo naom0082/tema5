@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hola</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .personer {
+            border: 5px solid black;
+            margin: 5px;
+            padding: 5px;
+            background-color: beige;
+
+
+
+        }
+
+        img {
+            width: 100px;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="liste"></div>
+
+    <script>
+        let allePersoner = [];
+        let filter = "b";
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        function start() {
+            let dest = document.querySelector("#liste");
+
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+                allePersoner = await jsonData.json();
+                visPersoner();
+            }
+
+            function visPersoner() {
+                allePersoner.forEach((allePersoner) => {
+                    if (allePersoner.hold == filter) {
+
+                        dest.innerHTML += `
+                        <div class="personer">
+                            <h2>${allePersoner.navn}</h2>
+
+                            <img src="${allePersoner.billede}" alt="${allePersoner.navn}">
+                           <p>Github: ${allePersoner.github}<a href ="https://github.com/${allePersoner.github}">Github</a></p>
+                            <p>Alder: ${allePersoner.alder}</p>
+<p>Køn: ${allePersoner.køn}</p>
+<p>Email: ${allePersoner.email}</p>
+<p>Hold: ${allePersoner.hold}</p>
+<p>Historie: ${allePersoner.historie}</p>
+                        </div>`;
+                    }
+
+                })
+            }
+            getJson();
+        }
+    </script>
+</body>
+
+</html>

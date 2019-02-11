@@ -1,0 +1,12 @@
+        function start() {
+
+
+            let dest = document.querySelector("#liste");
+            alledyr.forEach(alledyr => {
+                dest.innerHTML += ` <div class="dyr">
+
+<h3>${alledyr.navn}</h3> ${alledyr.type} <img src = "${alledyr.billede}" alt="${alledyr.navn}"> <p>${alledyr.levested}</p></div>`;
+            })
+
+
+        }
