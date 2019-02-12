@@ -48,42 +48,15 @@
             text-align: center;
         }
 
-        #popup {
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            background-color: darkblue;
-            display: none;
-            text-align: center;
-        }
 
-        #indhold {
-            box-sizing: border-box;
-            background-color: lightgray;
-            width: 90vw;
-            height: 90vh;
-            margin: auto;
-        }
-
-        #luk {
-            box-sizing: border-box;
-            text-align: right;
-            padding-right: 1em;
-        }
-
-        #luk button {
-            font-size: 2em;
-        }
 
         html {}
+
     </style>
 </head>
 
 <body>
-    <div id="popup">
-        <div id="luk"><button>X</button></div>
-        <div id="indhold"></div>
-    </div>
+
     <h1></h1>
     <header>
         <nav class="menu">
@@ -137,29 +110,19 @@
 <p>Hold: ${eachPerson.hold}, Alder:${eachPerson.alder} </p>
     </article>`;
                         dest.insertAdjacentHTML("beforeend", template);
-                        dest.lastElementChild.addEventListener("click", åbn);
+                        dest.lastElementChild.addEventListener("click", () => {
+                            location.href = "07-singleView.html?github=" + eachPerson.github;
 
-                        function åbn() {
-                            document.querySelector("#indhold").innerHTML =
-                                `<article class="person">
-<img class="billede" src = "${eachPerson.billede}">
-<p>Hold: ${eachPerson.hold}, Alder:${eachPerson.alder} </p>
-<h3>${eachPerson.navn}´s historie</h3>
-<p>${eachPerson.historie} </p>
-    </article>`;
-                            document.querySelector("#popup").style.display = "block";
-                        }
+                        });
+
                     }
+
 
 
                 })
             }
 
-            document.querySelector("#luk button").addEventListener("click", () => {
 
-                document.querySelector("#popup").style.display = "none";
-
-            })
 
             //function vispersoner slut
             document.querySelectorAll(".filter").forEach(elm => {
@@ -180,6 +143,7 @@
 
             getJson()
         }
+
     </script>
 
 

@@ -38,41 +38,11 @@
 
         }
 
-        #popup {
-
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            background-color: lightgrey;
-        }
-
-        #indhold {
-            box-sizing: border-box;
-            background-color: white;
-            width: 90vw;
-            height: 90vh;
-            margin: auto;
-        }
-
-        #luk {
-            box-sizing: border-box;
-            text-align: right;
-            padding-right: 1em;
-        }
-
-        #luk button {
-            font-size: 1em;
-        }
-
-        html {
-            overflow-y: hidden;
-        }
     </style>
 </head>
 
 
 <body>
-
 
 
     <div class="menu">
@@ -84,11 +54,6 @@
 
     </div>
     <div id="liste"></div>
-    <div id="popup">
-        <div id="luk"><button>X</button></div>
-        <div id="indhold"></div>
-
-    </div>
 
     <script>
         let allePersoner = [];
@@ -117,13 +82,15 @@
                 allePersoner.forEach(allePersoner => {
                     if (filter == "alle" || filter == allePersoner.hold) {
                         dest.innerHTML += `
-            <div class="personer">
-                <h2>${allePersoner.navn}</h2>
+                        <div class="personer">
+                            <h2>${allePersoner.navn}</h2>
 
-                <img src="${allePersoner.billede}" <p>Alder: ${allePersoner.alder}</p>
+                            <img src="${allePersoner.billede}"
+
+ <p>Alder: ${allePersoner.alder}</p>
 
 
-            </div>`;
+                        </div>`;
                     }
                 })
             }
@@ -142,7 +109,8 @@
             }
 
             getJson();
-        } <
+        }
+
     </script>
 </body>
 
